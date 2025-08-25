@@ -377,4 +377,3 @@ export default function ShadowTool({ imageEffects, onShadowChange, onShadowUpdat
     </div>
   )
 }
- 

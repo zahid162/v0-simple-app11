@@ -365,4 +365,4 @@ export default function AdjustTool({ imageEffects, onSliderChange, onPresetChang
       `}</style>
     </div>
   )
-} 
+}

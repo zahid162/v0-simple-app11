@@ -12,25 +12,25 @@ The system now uses **real MongoDB** instead of mock API. Templates are stored p
 **New Feature**: Templates now display with actual canvas rendering using the same logic as the edit page, showing exactly how effects will look when applied.
 
 ### 2. Install MongoDB Dependencies
-```bash
+\`\`\`bash
 npm install mongodb
-```
+\`\`\`
 
 ### 3. Environment Configuration
 Create a `.env.local` file in your project root with the following content:
 
-```env
+\`\`\`env
 # MongoDB Configuration
 MONGODB_URI=mongodb://localhost:27017/photo-editor
 MONGODB_DB=photo-editor
 MONGODB_COLLECTION=templates_versions
-```
+\`\`\`
 
 ### 4. MongoDB Setup Options
 
 #### Option A: Local MongoDB
 1. Install MongoDB Community Edition
-   ```bash
+   \`\`\`bash
    # Ubuntu/Debian
    sudo apt update
    sudo apt install mongodb
@@ -38,24 +38,24 @@ MONGODB_COLLECTION=templates_versions
    # macOS (using Homebrew)
    brew tap mongodb/brew
    brew install mongodb-community
-   ```
+   \`\`\`
 
 2. Start MongoDB service
-   ```bash
+   \`\`\`bash
    # Ubuntu/Debian
    sudo systemctl start mongod
    sudo systemctl enable mongod
    
    # macOS
    brew services start mongodb-community
-   ```
+   \`\`\`
 
 3. Verify MongoDB is running
-   ```bash
+   \`\`\`bash
    sudo systemctl status mongod
    # or
    mongosh --eval "db.runCommand('ping')"
-   ```
+   \`\`\`
 
 #### Option B: MongoDB Atlas (Cloud)
 1. Create account at [MongoDB Atlas](https://www.mongodb.com/atlas)
@@ -64,15 +64,15 @@ MONGODB_COLLECTION=templates_versions
 4. Update `MONGODB_URI` in `.env.local`
 
 ### 5. Seed the Database with Initial Templates
-```bash
+\`\`\`bash
 npm run seed
-```
+\`\`\`
 This will create 5 professional templates in your MongoDB database.
 
 ### 6. Start Development Server
-```bash
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
 ## Features Implemented
 
@@ -102,7 +102,7 @@ npm run dev
 - **Template Gallery**: Beautiful grid layout showing all available templates
 
 ### 4. Template Data Structure (MongoDB)
-```typescript
+\`\`\`typescript
 {
   _id: ObjectId,
   name: string,
@@ -114,7 +114,7 @@ npm run dev
   createdAt: Date,
   updatedAt: Date
 }
-```
+\`\`\`
 
 ### 5. Professional Templates Included
 The system comes with 5 pre-designed professional templates loaded from MongoDB:
@@ -154,7 +154,7 @@ The system comes with 5 pre-designed professional templates loaded from MongoDB:
 - Timestamp management (createdAt, updatedAt)
 
 ### File Structure
-```
+\`\`\`
 app/
 ├── api/templates/route.ts    # Template API endpoints (MongoDB)
 ├── components/
@@ -168,7 +168,7 @@ lib/
 └── mongodb.ts                # MongoDB connection utility
 scripts/
 └── seed-database.js          # Database seeding script
-```
+\`\`\`
 
 ## Troubleshooting
 

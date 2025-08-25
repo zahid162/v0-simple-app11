@@ -78,4 +78,4 @@ export interface BackgroundData {
     opacity: number
     blur: number
   }
-} 
+}

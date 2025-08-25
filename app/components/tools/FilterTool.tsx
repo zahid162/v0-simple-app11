@@ -348,4 +348,4 @@ export default function FilterTool({ onPresetChange }: FilterToolProps) {
       `}</style>
     </div>
   )
-} 
+}

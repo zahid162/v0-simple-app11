@@ -579,4 +579,4 @@ export default function BackgroundTool({ backgroundData, onBackgroundChange }: B
       `}</style>
     </div>
   )
-} 
+}

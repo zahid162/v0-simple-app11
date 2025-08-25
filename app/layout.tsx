@@ -1,34 +1,27 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, DM_Sans } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 
-const spaceGrotesk = Space_Grotesk({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
-})
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
 })
 
 export const metadata: Metadata = {
-  title: "PhotoEdit Pro - Modern Photo Editor",
-  description: "Professional photo editing with dual-layer canvas system",
-  generator: "v0.app",
+  title: "Simple App",
+  description: "A clean, minimal application",
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
-      <body suppressHydrationWarning={true}>{children}</body>
+    <html lang="en" className={`${inter.className} antialiased`}>
+      <body>{children}</body>
     </html>
   )
 }

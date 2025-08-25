@@ -1,16 +1,16 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from "mongodb"
 
 // MongoDB connection string
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/photo-editor';
-const DB_NAME = process.env.MONGODB_DB || 'photo-editor';
-const COLLECTION_NAME = process.env.MONGODB_COLLECTION || 'templates_versions';
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/photo-editor"
+const DB_NAME = process.env.MONGODB_DB || "photo-editor"
+const COLLECTION_NAME = process.env.MONGODB_COLLECTION || "templates_versions"
 
 // Initial templates data
 const initialTemplates = [
   {
-    name: 'Vintage Portrait',
-    description: 'Classic vintage effect for portraits with warm tones',
-    status: 'active',
+    name: "Vintage Portrait",
+    description: "Classic vintage effect for portraits with warm tones",
+    status: "active",
     imageEffects: {
       brightness: 110,
       contrast: 120,
@@ -60,18 +60,18 @@ const initialTemplates = [
         animation: false,
       },
     },
-    backgroundData: { 
-      type: 'gradient', 
-      color: '#f5f5dc',
-      color2: '#deb887'
+    backgroundData: {
+      type: "gradient",
+      color: "#f5f5dc",
+      color2: "#deb887",
     },
-    createdAt: new Date('2024-01-01'),
-    updatedAt: new Date('2024-01-01'),
+    createdAt: new Date("2024-01-01"),
+    updatedAt: new Date("2024-01-01"),
   },
   {
-    name: 'Modern Clean',
-    description: 'Clean, modern look for professional photos',
-    status: 'active',
+    name: "Modern Clean",
+    description: "Clean, modern look for professional photos",
+    status: "active",
     imageEffects: {
       brightness: 100,
       contrast: 110,
@@ -121,17 +121,17 @@ const initialTemplates = [
         animation: false,
       },
     },
-    backgroundData: { 
-      type: 'color', 
-      color: '#ffffff' 
+    backgroundData: {
+      type: "color",
+      color: "#ffffff",
     },
-    createdAt: new Date('2024-01-02'),
-    updatedAt: new Date('2024-01-02'),
+    createdAt: new Date("2024-01-02"),
+    updatedAt: new Date("2024-01-02"),
   },
   {
-    name: 'Dramatic Black & White',
-    description: 'High contrast black and white dramatic effect',
-    status: 'active',
+    name: "Dramatic Black & White",
+    description: "High contrast black and white dramatic effect",
+    status: "active",
     imageEffects: {
       brightness: 90,
       contrast: 150,
@@ -181,18 +181,18 @@ const initialTemplates = [
         animation: false,
       },
     },
-    backgroundData: { 
-      type: 'gradient', 
-      color: '#000000',
-      color2: '#333333'
+    backgroundData: {
+      type: "gradient",
+      color: "#000000",
+      color2: "#333333",
     },
-    createdAt: new Date('2024-01-03'),
-    updatedAt: new Date('2024-01-03'),
+    createdAt: new Date("2024-01-03"),
+    updatedAt: new Date("2024-01-03"),
   },
   {
-    name: 'Sunset Glow',
-    description: 'Warm sunset lighting with golden glow effects',
-    status: 'active',
+    name: "Sunset Glow",
+    description: "Warm sunset lighting with golden glow effects",
+    status: "active",
     imageEffects: {
       brightness: 105,
       contrast: 115,
@@ -243,18 +243,18 @@ const initialTemplates = [
         animation: false,
       },
     },
-    backgroundData: { 
-      type: 'gradient', 
-      color: '#FFE4B5',
-      color2: '#FFB6C1'
+    backgroundData: {
+      type: "gradient",
+      color: "#FFE4B5",
+      color2: "#FFB6C1",
     },
-    createdAt: new Date('2024-01-04'),
-    updatedAt: new Date('2024-01-04'),
+    createdAt: new Date("2024-01-04"),
+    updatedAt: new Date("2024-01-04"),
   },
   {
-    name: 'Cyberpunk Neon',
-    description: 'Futuristic cyberpunk style with neon accents',
-    status: 'active',
+    name: "Cyberpunk Neon",
+    description: "Futuristic cyberpunk style with neon accents",
+    status: "active",
     imageEffects: {
       brightness: 95,
       contrast: 130,
@@ -307,48 +307,58 @@ const initialTemplates = [
         animation: false,
       },
     },
-    backgroundData: { 
-      type: 'gradient', 
-      color: '#1a1a2e',
-      color2: '#16213e'
+    backgroundData: {
+      type: "gradient",
+      color: "#1a1a2e",
+      color2: "#16213e",
     },
-    createdAt: new Date('2024-01-05'),
-    updatedAt: new Date('2024-01-05'),
-  }
-];
+    createdAt: new Date("2024-01-05"),
+    updatedAt: new Date("2024-01-05"),
+  },
+]
 
 async function seedDatabase() {
-  const client = new MongoClient(MONGODB_URI);
-  
+  let client
+
   try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-    
-    const db = client.db(DB_NAME);
-    const collection = db.collection(COLLECTION_NAME);
-    
+    if (!MONGODB_URI) {
+      throw new Error("MONGODB_URI environment variable is required")
+    }
+
+    console.log("Connecting to MongoDB...")
+    client = new MongoClient(MONGODB_URI)
+    await client.connect()
+    console.log("Connected to MongoDB")
+
+    const db = client.db(DB_NAME)
+    const collection = db.collection(COLLECTION_NAME)
+
     // Clear existing templates
-    await collection.deleteMany({});
-    console.log('Cleared existing templates');
-    
+    await collection.deleteMany({})
+    console.log("Cleared existing templates")
+
     // Insert new templates
-    const result = await collection.insertMany(initialTemplates);
-    console.log(`Inserted ${result.insertedCount} templates`);
-    
+    const result = await collection.insertMany(initialTemplates)
+    console.log(`Inserted ${result.insertedCount} templates`)
+
     // Display inserted templates
-    const templates = await collection.find({}).toArray();
-    console.log('\nInserted templates:');
-    templates.forEach(template => {
-      console.log(`- ${template.name} (${template.status})`);
-    });
-    
+    const templates = await collection.find({}).toArray()
+    console.log("\nInserted templates:")
+    templates.forEach((template) => {
+      console.log(`- ${template.name} (${template.status})`)
+    })
+
+    console.log("\nDatabase seeding completed successfully!")
   } catch (error) {
-    console.error('Error seeding database:', error);
+    console.error("Error seeding database:", error.message)
+    process.exit(1)
   } finally {
-    await client.close();
-    console.log('Database connection closed');
+    if (client) {
+      await client.close()
+      console.log("Database connection closed")
+    }
   }
 }
 
 // Run the seed function
-seedDatabase();
+seedDatabase()

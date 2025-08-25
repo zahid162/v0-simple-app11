@@ -552,4 +552,4 @@ export default function OutlineTool({ imageEffects, onOutlineChange }: OutlineTo
       `}</style>
     </div>
   )
-} 
+}

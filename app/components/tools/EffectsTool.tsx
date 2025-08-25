@@ -93,4 +93,4 @@ export default function EffectsTool({ imageEffects, onSliderChange }: EffectsToo
       </div>
     </div>
   )
-} 
+}

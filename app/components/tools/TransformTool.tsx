@@ -70,4 +70,4 @@ export default function TransformTool({ imageEffects, onSliderChange }: Transfor
       </div>
     </div>
   )
-} 
+}
