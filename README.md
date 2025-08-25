@@ -1,9 +1,9 @@
-# Simple app
+# Photo editor website
 
 *Automatically synced with your [v0.app](https://v0.app) deployments*
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/zahids-projects-b0ed4815/v0-simple-app)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/HgrBx7wphVm)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/zahid726s-projects/v0-photo-editor-website)
+[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/sMgAkemBYs6)
 
 ## Overview
 
@@ -14,13 +14,13 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 Your project is live at:
 
-**[https://vercel.com/zahids-projects-b0ed4815/v0-simple-app](https://vercel.com/zahids-projects-b0ed4815/v0-simple-app)**
+**[https://vercel.com/zahid726s-projects/v0-photo-editor-website](https://vercel.com/zahid726s-projects/v0-photo-editor-website)**
 
 ## Build your app
 
 Continue building your app on:
 
-**[https://v0.app/chat/projects/HgrBx7wphVm](https://v0.app/chat/projects/HgrBx7wphVm)**
+**[https://v0.app/chat/projects/sMgAkemBYs6](https://v0.app/chat/projects/sMgAkemBYs6)**
 
 ## How It Works
 
